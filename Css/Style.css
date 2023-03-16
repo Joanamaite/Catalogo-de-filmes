@@ -111,16 +111,17 @@ li {
     margin-top: 20px;
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 70px;
     box-shadow: 10px 10px 10px 2px rgba(0, 0, 0, 0.836);
 }
 .card-img-top{
     width: 8vw;
-    height: 60vh;
+    height: 55vh;
 
 }
 #lista-filme{
 margin-left: 90px;
-margin-bottom: 70px;
+margin-bottom: 80px;
 }
 
 .imagens:hover{

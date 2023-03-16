@@ -31,8 +31,6 @@ btnBuscarFilme.onclick = ()=>{
     }
     return false;
 }
-
-
 let listarFilmes = async (filmes) => {
     let listaFilmes = document.querySelector("#lista-filme");
     listaFilmes.innerHTML = "";
@@ -43,5 +41,16 @@ let listarFilmes = async (filmes) => {
       });
     }
   }
+
+  setBtnDetalhes=()=>{
+    this.btnDetalhes = document.createElement("button");
+    this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
+    this.btnDetalhes.setAttribute("id",this.id);
+    this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
+  }
+  getBtnDetalhes=()=>{
+    return this.btnDetalhes
+  }
+
 
 
