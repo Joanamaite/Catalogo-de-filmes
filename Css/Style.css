@@ -123,7 +123,15 @@ li {
 margin-left: 90px;
 margin-bottom: 80px;
 }
-
+.btnDetalhesFilme{
+    margin-left: 68%;
+    margin-top: 5%;
+    border-radius: 14%;
+}
+.btnDetalhesFilme:hover{
+    background-color: #04185a;
+    color: #fff;
+}
 .imagens:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);

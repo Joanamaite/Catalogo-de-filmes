@@ -61,6 +61,22 @@ class Filme{
         cardBody.appendChild(this.getBtnDetalhes());
         return card;
     }
+    setBtnDetalhes=()=>{
+        this.btnDetalhes = document.createElement("button");
+        this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
+        this.btnDetalhes.setAttribute("id",this.id);
+        this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
+      }
+      getBtnDetalhes=()=>{
+        return this.btnDetalhes
+      }
+    
+       GetDetalhesFilme=()=>{
+        let divDetalhes = document.createElement("div");
+        divDetalhes.setAttribute("id","detalhes");
+        
+        
+      }
     
  }
 

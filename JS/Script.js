@@ -38,19 +38,36 @@ let listarFilmes = async (filmes) => {
     if (filmes.length > 0) {
       filmes.forEach(async (filme) => {
         listaFilmes.appendChild(await filme.getCard());
+        filme.getBtnDetalhes().onclick=()=>{
+          detalhesFilme(filme.id);
+        }
       });
     }
   }
 
-  setBtnDetalhes=()=>{
-    this.btnDetalhes = document.createElement("button");
-    this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
-    this.btnDetalhes.setAttribute("id",this.id);
-    this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
+
+
+  let detalhesFilme = async(id)=>{
+    fetch("https://www.omdbapi.com/?apikey=cf99ae7d&i="+id)
+    .then((resp)=> resp.json())
+    .then((resp)=>{
+      console.log(resp);
+      let filme = new Filme(
+        resp.imdbID,
+        resp.Title,
+        resp.Year,
+        resp.Genre.split(","),
+        resp.Runtime,
+        resp.Poster,
+        resp.plot,
+        resp.Director,
+        resp.Actors.split(","),
+        resp.Awards,
+        resp.imdbRating
+      )
+
+      console.log(filme);
+    })
   }
-  getBtnDetalhes=()=>{
-    return this.btnDetalhes
-  }
 
-
-
+ 
