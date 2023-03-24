@@ -45,16 +45,23 @@ let detalhesFilme = async(id)=>{
       resp.Genre.split(","),
       resp.Runtime,
       resp.Poster,
-      resp.plot,
+      resp.Plot,
       resp.Director,
       resp.Actors.split(","),
       resp.Awards,
       resp.imdbRating
     )
+       
     document.querySelector("#lista-filme").innerHTML="";
     document.querySelector("#mostrar-filme").innerHTML="";
   console.log(filme.getDetalhesFilme());
    document.querySelector("#lista-filme").appendChild(filme.getDetalhesFilme());
+
+   document.querySelector("#btnFechar").onclick=()=>{
+    document.querySelector("#mostrar-filme").style.display="flex";
+    document.querySelector("#lista-filme").innerHTML="";
+    document.querySelector("#lista-filme").style.display="none";
+   }
   });
 }
 

@@ -126,9 +126,20 @@ class Filme{
         divDetalhes.appendChild(novadiv);
         divDetalhes.appendChild(detalhes)
 
+        let btnSalvar=document.createElement("button");
+        btnSalvar.appendChild(document.createTextNode("Salvar"));
+        btnSalvar.setAttribute("id", "btnSalvar");
+        divDetalhes.appendChild(btnSalvar);
+
+        let btnFechar = document.createElement("button");
+        btnFechar.appendChild(document.createTextNode("Fechar"));
+        btnFechar.setAttribute("id", "btnFechar");
+        divDetalhes.appendChild(btnFechar);
         return divDetalhes;
         
       }
+
+      
      
     
  }
