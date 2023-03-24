@@ -1,5 +1,6 @@
 let InputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
+let botao = document.querySelector("#btnDetalhesFilme");
 
 
 btnBuscarFilme.onclick = ()=>{
@@ -31,43 +32,44 @@ btnBuscarFilme.onclick = ()=>{
     }
     return false;
 }
+
+let detalhesFilme = async(id)=>{
+  fetch("https://www.omdbapi.com/?apikey=cf99ae7d&i="+id)
+  .then((resp)=> resp.json())
+  .then((resp)=>{
+    console.log(resp);
+    let filme = new Filme(
+      resp.imdbID,
+      resp.Title,
+      resp.Year,
+      resp.Genre.split(","),
+      resp.Runtime,
+      resp.Poster,
+      resp.plot,
+      resp.Director,
+      resp.Actors.split(","),
+      resp.Awards,
+      resp.imdbRating
+    )
+    document.querySelector("#lista-filme").innerHTML="";
+    document.querySelector("#mostrar-filme").innerHTML="";
+  console.log(filme.getDetalhesFilme());
+   document.querySelector("#lista-filme").appendChild(filme.getDetalhesFilme());
+  });
+}
+
 let listarFilmes = async (filmes) => {
-    let listaFilmes = document.querySelector("#lista-filme");
-    listaFilmes.innerHTML = "";
-    console.log(listaFilmes);
+    let listaFilmes = await document.querySelector("#lista-filme");
+    listaFilmes.style.dispay="flex";
+    listaFilmes.innerHTML="";
+   document.querySelector("#mostrar-filme").innerHTML="";
+   document.querySelector("#mostrar-filme").style.display="none";
     if (filmes.length > 0) {
       filmes.forEach(async (filme) => {
         listaFilmes.appendChild(await filme.getCard());
         filme.getBtnDetalhes().onclick=()=>{
-          detalhesFilme(filme.id);
+         detalhesFilme(filme.id);
         }
       });
     }
   }
-
-
-
-  let detalhesFilme = async(id)=>{
-    fetch("https://www.omdbapi.com/?apikey=cf99ae7d&i="+id)
-    .then((resp)=> resp.json())
-    .then((resp)=>{
-      console.log(resp);
-      let filme = new Filme(
-        resp.imdbID,
-        resp.Title,
-        resp.Year,
-        resp.Genre.split(","),
-        resp.Runtime,
-        resp.Poster,
-        resp.plot,
-        resp.Director,
-        resp.Actors.split(","),
-        resp.Awards,
-        resp.imdbRating
-      )
-
-      console.log(filme);
-    })
-  }
-
- 

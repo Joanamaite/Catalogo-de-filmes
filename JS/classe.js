@@ -13,14 +13,13 @@ class Diretor{
 
 class Filme{
     constructor(id,titulo,ano,genero,duracao,cartaz,sinopse,direcao,elenco,classificacao,avaliacao){
-        
         this.id=id;
         this.titulo=titulo;
         this.ano=ano;
         this.genero=genero;
         this.duracao=duracao;
-        this.sinopse=sinopse;
         this.cartaz=cartaz;
+        this.sinopse=sinopse;
         this.direcao=direcao;
         this.elenco=elenco;
         this.classificacao=classificacao;
@@ -67,16 +66,70 @@ class Filme{
         this.btnDetalhes.setAttribute("id",this.id);
         this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
       }
-      getBtnDetalhes=()=>{
+       getBtnDetalhes=()=>{
         return this.btnDetalhes
+        
       }
+
+    getDetalhesFilme=()=>{
+       let divDetalhes = document.createElement("div");
+        divDetalhes.setAttribute("class","principal");
+        let novadiv = document.createElement("div")
+        novadiv.setAttribute("class", "novaimagem")
+        let imagem = document.createElement("img")
+        imagem.setAttribute("src", this.cartaz);
+        imagem.setAttribute("class","img");
+        let detalhes= document.createElement("div");
+        detalhes.setAttribute("class","detalhes");
+        let card = document.createElement("div");
+        card.setAttribute("id", "card-body");
+        let titulo = document.createElement("h5");
+        titulo.setAttribute("class","card-title");
+        let ano = document.createElement("p");
+        ano.setAttribute("class","card-text");
+        let genero = document.createElement("p");
+        genero.setAttribute("class","card-text");
+        let duracao = document.createElement("p");
+        duracao.setAttribute("class","card-text");
+        let clas = document.createElement("p");
+        clas.setAttribute("class","card-text");
+        let resumo = document.createElement("p");
+        resumo.setAttribute("class","card-text");
+        let rank = document.createElement("p");
+        rank.setAttribute("class","card-text");
+        let elenco = document.createElement("p");
+        elenco.setAttribute("class","card-text");
+        let ator = document.createElement("p");
+        ator.setAttribute("class","card-text");
+        
+        titulo.appendChild(document.createTextNode(this.titulo));
+        ano.appendChild(document.createTextNode(this.ano));
+        genero.appendChild(document.createTextNode(this.genero));
+        duracao.appendChild(document.createTextNode(this.duracao));
+       clas.appendChild(document.createTextNode(this.classificacao));
+       resumo.appendChild(document.createTextNode(this.sinopse));
+       rank.appendChild(document.createTextNode(this.avaliacao));
+       elenco.appendChild(document.createTextNode(this.direcao));
+        ator.appendChild(document.createTextNode(this.elenco));
     
-       GetDetalhesFilme=()=>{
-        let divDetalhes = document.createElement("div");
-        divDetalhes.setAttribute("id","detalhes");
-        
+         detalhes.appendChild(titulo);
+         detalhes.appendChild(ano);
+         detalhes.appendChild(genero);
+         detalhes.appendChild(duracao);
+         detalhes.appendChild(clas)
+         detalhes.appendChild(resumo);
+         detalhes.appendChild(rank);
+        detalhes.appendChild(elenco);
+        detalhes.appendChild(ator);
+        novadiv.appendChild(imagem);
+        detalhes.appendChild(card);
+        divDetalhes.appendChild(novadiv);
+        divDetalhes.appendChild(detalhes)
+
+        return divDetalhes;
         
       }
+     
     
  }
 
