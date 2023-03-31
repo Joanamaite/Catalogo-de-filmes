@@ -39,17 +39,17 @@ class Filme{
         hCardTitle.setAttribute("class","card-title");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style","display:flex; justify-content:space-aroud;");
-        let divGenero = document.createElement("div");
-        divGenero.setAttribute("style","flex-grow:1;");
+        let divDuracao = document.createElement("div");
+        divDuracao.setAttribute("style","flex-grow:1;");
         let divAnoProducao = document.createElement("div");
         divAnoProducao.setAttribute("style","flex-grow:1;");
         let divClassificacao = document.createElement("div");
         divClassificacao.setAttribute("style", "flex-grow:1;");
         hCardTitle.appendChild(document.createTextNode(this.titulo));
-        divGenero.appendChild(document.createTextNode(this.genero));
+        divDuracao.appendChild(document.createTextNode(this.duracao));
         divAnoProducao.appendChild(document.createTextNode(this.ano));
-        divClassificacao.appendChild(document.createTextNode(this.classficacao));
-        divDetalhes.appendChild(divGenero);
+        divClassificacao.appendChild(document.createTextNode(this.classificacao));
+        divDetalhes.appendChild(divDuracao);
         divDetalhes.appendChild(divAnoProducao);
         divDetalhes.appendChild(divClassificacao);
         card.appendChild(imgCartaz);
@@ -103,14 +103,14 @@ class Filme{
         ator.setAttribute("class","card-text");
         
         titulo.appendChild(document.createTextNode(this.titulo));
-        ano.appendChild(document.createTextNode(this.ano));
-        genero.appendChild(document.createTextNode(this.genero));
-        duracao.appendChild(document.createTextNode(this.duracao));
-       clas.appendChild(document.createTextNode(this.classificacao));
-       resumo.appendChild(document.createTextNode(this.sinopse));
-       rank.appendChild(document.createTextNode(this.avaliacao));
-       elenco.appendChild(document.createTextNode(this.direcao));
-        ator.appendChild(document.createTextNode(this.elenco));
+        ano.appendChild(document.createTextNode("Ano: "+this.ano));
+        genero.appendChild(document.createTextNode("Gênero: "+this.genero));
+        duracao.appendChild(document.createTextNode("Duração: "+this.duracao));
+       clas.appendChild(document.createTextNode("Classificação: "+this.classificacao));
+       resumo.appendChild(document.createTextNode("Sinopse: "+this.sinopse));
+       rank.appendChild(document.createTextNode("Avaliação: "+this.avaliacao));
+       elenco.appendChild(document.createTextNode("Direção: "+this.direcao));
+        ator.appendChild(document.createTextNode("Atores: "+this.elenco));
     
          detalhes.appendChild(titulo);
          detalhes.appendChild(ano);
@@ -127,9 +127,14 @@ class Filme{
         divDetalhes.appendChild(detalhes)
 
         let btnSalvar=document.createElement("button");
-        btnSalvar.appendChild(document.createTextNode("Salvar"));
+        btnSalvar.appendChild(document.createTextNode("Favoritar"));
         btnSalvar.setAttribute("id", "btnSalvar");
         divDetalhes.appendChild(btnSalvar);
+
+        let btnDesfa=document.createElement("button");
+        btnDesfa.appendChild(document.createTextNode("Desfavoritar"));
+        btnDesfa.setAttribute("id", "btnDesfa");
+        divDetalhes.appendChild(btnDesfa);
 
         let btnFechar = document.createElement("button");
         btnFechar.appendChild(document.createTextNode("Fechar"));
