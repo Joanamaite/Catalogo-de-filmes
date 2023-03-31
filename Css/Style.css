@@ -137,7 +137,7 @@ margin-bottom: 80px;
     margin-top: 5%;
     border-radius: 14%;
     background-color: #f39256;
-    color: #1c1c28;
+    color: #fff;
 }
 .btnDetalhesFilme:hover{
     background-color: #1c1c28;
@@ -161,6 +161,7 @@ margin-bottom: 80px;
     width: 53vw;
     margin-top: 4%;
     margin-left: 3%;
+    margin-right: 5%;
  
 }
 .card-text{

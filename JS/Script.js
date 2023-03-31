@@ -81,8 +81,10 @@ let detalhesFilme = async(id)=>{
     localStorage.setItem("filmesFavoritos", filmes);
   };
   document.querySelector("#btnDesfa").onclick = () =>{
-    let filmesFavoritos = JSON.parse(localStorage.getItem('filmesFavoritos'));   
+    let filmesFavoritos = JSON.parse(localStorage.getItem('filmesFavoritos'));  
+
     filmesFavoritos = filmesFavoritos.filter(pegaId => pegaId.id!==filme.id);
+
     localStorage.setItem('filmesFavoritos',JSON.stringify(filmesFavoritos));
     listarFavoritos();
 }
@@ -132,5 +134,5 @@ let listarFilmes = async (filmes) => {
   navFavoritos.onclick=()=>{
    listarFavoritos();
   }
-  
 
+  

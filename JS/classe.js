@@ -39,19 +39,7 @@ class Filme{
         hCardTitle.setAttribute("class","card-title");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style","display:flex; justify-content:space-aroud;");
-        let divDuracao = document.createElement("div");
-        divDuracao.setAttribute("style","flex-grow:1;");
-        let divAnoProducao = document.createElement("div");
-        divAnoProducao.setAttribute("style","flex-grow:1;");
-        let divClassificacao = document.createElement("div");
-        divClassificacao.setAttribute("style", "flex-grow:1;");
         hCardTitle.appendChild(document.createTextNode(this.titulo));
-        divDuracao.appendChild(document.createTextNode(this.duracao));
-        divAnoProducao.appendChild(document.createTextNode(this.ano));
-        divClassificacao.appendChild(document.createTextNode(this.classificacao));
-        divDetalhes.appendChild(divDuracao);
-        divDetalhes.appendChild(divAnoProducao);
-        divDetalhes.appendChild(divClassificacao);
         card.appendChild(imgCartaz);
         card.appendChild(cardBody);
         cardBody.appendChild(hCardTitle);
@@ -144,7 +132,18 @@ class Filme{
         
       }
 
-      
+      getEditarFilme=()=>{
+        let formulario = document.createElement("form");
+        let label = document.createElement("label");
+        labelTitulo=
+        let inputTitulo = document.createElement("input");
+
+
+
+    
+    }
+    
+  
      
     
  }
