@@ -128,20 +128,83 @@ class Filme{
         btnFechar.appendChild(document.createTextNode("Fechar"));
         btnFechar.setAttribute("id", "btnFechar");
         divDetalhes.appendChild(btnFechar);
+
+        let btEditar = document.createElement("button");
+        btEditar.appendChild(document.createTextNode("Editar"));
+        btEditar.setAttribute("id", "btnEditar");
+        divDetalhes.appendChild(btEditar);
+
+
         return divDetalhes;
         
       }
+      getEditar =() =>{
+        let divDetalhes = document.createElement("div");
+         divDetalhes.setAttribute("id", "detalhes");
+         divDetalhes.setAttribute("class", "card mb-3");
+        let detalhes = document.createElement("div");
+        detalhes.setAttribute("class", "row");
+        let card = document.createElement("div");
+        card.setAttribute("class","col-md-12");
+        let imagem = document.createElement("img");
+        imagem.setAttribute("src",this.cartaz);
+        imagem.setAttribute("class", "img-fluid");
+        let novadiv= document.createElement("div");
+        novadiv.setAttribute("id", "nova");
+        novadiv.setAttribute("class", "col-md-8");
+        let body = document.createElement("div");
+        body .setAttribute("class", "card-body");
+        let titulo = document.createElement("h5");
+        titulo.setAttribute("class", "card-title");
+        titulo.appendChild(document.createTextNode("Titulo:"));
+        let inputT = document.createElement("input");
+        inputT.setAttribute("class","form-control")
+        inputT.setAttribute("id","inputT");
+        let ano = document.createElement("p");
+        ano.setAttribute("class", "card-title");
+        ano.appendChild(document.createTextNode("Ano:"));
+        let inputA = document.createElement("input");
+        inputA.setAttribute("class","form-control")
+        inputA.setAttribute("id","inputA");
+        let dura = document.createElement("p");
+        dura.setAttribute("class", "card-title");
+        dura.appendChild(document.createTextNode("Duração:"));
+        let inputD = document.createElement("input");
+        inputD.setAttribute("class","form-control")
+        inputD.setAttribute("id","inputD");
+        let sinopse = document.createElement("p");
+        sinopse.setAttribute("class", "card-title");
+        sinopse.appendChild(document.createTextNode("sinopse:"));
+        let input = document.createElement("input");
+       input.setAttribute("class","form-control me-2")
+       input.setAttribute("id","inputS");
 
-      getEditarFilme=()=>{
-        let formulario = document.createElement("form");
-        let label = document.createElement("label");
-        labelTitulo=
-        let inputTitulo = document.createElement("input");
+       
+       let btnSalvarF=document.createElement("button");
+       btnSalvarF.appendChild(document.createTextNode("Salvar"));
+       btnSalvarF.setAttribute("id", "btnSalvarF");
 
 
+       divDetalhes.appendChild(card);
+       divDetalhes.appendChild(detalhes);
+       detalhes.appendChild(card);
+       card.appendChild(imagem);
+        detalhes.appendChild(novadiv);
+        detalhes.appendChild(body);
+        body.appendChild(titulo);
+         body.appendChild(inputT);
+         body.appendChild(sinopse);
+         body.appendChild(input);
+         body.appendChild(ano);
+         body.appendChild(inputA);
+         body.appendChild(dura);
+         body.appendChild(inputD);
+         body.appendChild(btnSalvarF);
 
-    
+        return divDetalhes;
     }
+
+     
     
   
      

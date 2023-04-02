@@ -88,9 +88,33 @@ let detalhesFilme = async(id)=>{
     localStorage.setItem('filmesFavoritos',JSON.stringify(filmesFavoritos));
     listarFavoritos();
 }
+document.querySelector("#btnEditar").onclick=()=>{
+  document.querySelector("#mostrar-filme").style.display="none";
+  document.querySelector("#lista-filme").innerHTML="";
+  document.querySelector("#lista-filme").appendChild(filme.getEditar());
+
+  document.querySelector("#btnSalvarF").onclick= ()=>{
+    let inputTi= document.querySelector("#inputT");
+    let inputA = document.querySelector("#inputA");
+    let inputD = document.querySelector("#inputD");
+    let input = document.querySelector("#inputS");
+
+    let filmeEditado = {
+      titulo: inputTi.value,
+      ano: inputA.value,
+      duracao: inputD.value,
+      sinopse: input.value
+    };
+    localStorage.setItem("filmeEditado", JSON.stringify(filmeEditado));
+    filmeEditado = JSON.parse(localStorage.getItem("filmeEditado"));
+    console.log(filmeEditado.titulo);
+   
+    listarFavoritos();
+
+ }
+}
   });
 }
-
 let listarFilmes = async (filmes) => {
     let listaFilmes = await document.querySelector("#lista-filme");
     listaFilmes.style.dispay="flex";
@@ -130,9 +154,91 @@ let listarFilmes = async (filmes) => {
 
     })
     listarFilmes(filmes);
+    
   }
   navFavoritos.onclick=()=>{
    listarFavoritos();
   }
 
+  let editarosFilmes = async(num)=>{
+    let resp = JSON.parse(localStorage[num]);
+      console.log(resp);
+      let filme = new Filme(
+        resp.imdbID,
+        resp.Title,
+        resp.Year,
+        resp.Genre.split(","),
+        resp.Runtime,
+        resp.Poster,
+        resp.Plot,
+        resp.Director,
+        resp.Actors.split(","),
+        resp.Awards,
+        resp.imdbRating
+      )
+         
+      document.querySelector("#lista-filme").innerHTML="";
+      document.querySelector("#mostrar-filme").innerHTML="";
+      console.log(filme.getDetalhesFilme());
+     document.querySelector("#lista-filme").appendChild(filme.getDetalhesFilme());
   
+     document.querySelector("#btnFechar").onclick=()=>{
+      listarFilmes(filme);
+     }
+     logo.onclick=()=>{
+      listarFilmes(filme);
+    }
+    document.querySelector("#btnSalvar").onclick = () => {
+      let filmes = new Array();
+      let filmesString = localStorage.getItem('filmesFavoritos');
+      if (filmesString) {
+        filmes = JSON.parse(filmesString);
+      }
+    
+      if (filmes && filmes.some(filmeVall => filmeVall.id === filme.id)) {
+        alert("O filme já esta salvo");
+        return;
+      }
+      
+      filmes.push(filme);
+      filmes = JSON.stringify(filmes);
+      localStorage.setItem("filmesFavoritos", filmes);
+    };
+    document.querySelector("#btnDesfa").onclick = () =>{
+      let filmesFavoritos = JSON.parse(localStorage.getItem('filmesFavoritos'));  
+  
+      filmesFavoritos = filmesFavoritos.filter(pegaId => pegaId.id!==filme.id);
+  
+      localStorage.setItem('filmesFavoritos',JSON.stringify(filmesFavoritos));
+      listarFavoritos();
+  }
+  document.querySelector("#btnEditar").onclick=()=>{
+    document.querySelector("#mostrar-filme").style.display="none";
+    document.querySelector("#lista-filme").innerHTML="";
+    document.querySelector("#lista-filme").appendChild(filme.getEditar());
+  
+    document.querySelector("#btnSalvarF").onclick= ()=>{
+      let inputTi= document.querySelector("#inputT");
+      let inputA = document.querySelector("#inputA");
+      let inputD = document.querySelector("#inputD");
+      let input = document.querySelector("#inputS");
+  
+      let filmeEditado = {
+        titulo: inputTi.value,
+        ano: inputA.value,
+        duracao: inputD.value,
+        sinopse: input.value
+      };
+      localStorage.setItem("filmeEditado", JSON.stringify(filmeEditado));
+      filmeEditado = JSON.parse(localStorage.getItem("filmeEditado"));
+      console.log(filmeEditado.titulo);
+     
+      listarFavoritos();
+  
+   }
+  }
+    };
+  
+ 
+
+ 
